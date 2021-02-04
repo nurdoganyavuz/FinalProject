@@ -1,11 +1,17 @@
-﻿using System;
+﻿using Entities.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IEntityRepository<T>
+    //Generic Constraint -- Generic kısıt; T istediğimiz tipi parametre olarak girmemizi sağlar ama biz sadece entity objeleri "girilebilsin" istiyoruz.
+    //class -> referans tip. T generic tipini where ile kısıtladık. T bir referans tip olmalı VE IEntity classını implement eden classlardan biri olmalı.
+    //new() -> sadece IEntity yazsaydık parametre olarak IEntity de girilebilecekti. Fakat new() sadece newlenebilen class'ların girilmesini sağlar.
+    //IEntity bir interface'dir ve interface'ler newlenemez. Dolayısıyla T parametresi olarak yalnızca IEntity class'ını implement eden classlar girilebilecek.
+    //product, category, customer IEntity classını implement ettiği için parametre olarak sadece onlar girilebilir.
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
         //Expression -> filtreleme yaparak listelemeyi sağlar; categoryId'si 2 olanları listele, productId'si 5 olanları listele vs gibi.
         //fiyata göre sırala, kategoriye göre sırala gibi filtrelemeler yapmaya olanak sağlar.

@@ -23,6 +23,17 @@ namespace Business.Concrete
             
             return _productDal.GetAll(); //kuralları sağlıyorum artık bana ürünleri getir diyor.
         }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p => p.CategoryId == id); //programda gönderilen kategori id'yi filtre olarak alır ve her ürünün kategori id'sine bakar, 
+                                                               //gönderilen kategori id ile kategori id'si EŞİT olan tüm ürünleri getirir.
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p=> p.UnitPrice>=min && p.UnitPrice<=max);
+        }
     }
 }
 
