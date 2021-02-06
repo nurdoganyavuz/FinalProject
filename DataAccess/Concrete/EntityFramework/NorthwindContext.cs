@@ -19,7 +19,11 @@ namespace DataAccess.Concrete.EntityFramework
         //yani projedeki objelerimiz veritabanındaki hangi objelere karşılık geliyor? DbSet ile bunları set ederiz.
         // <projedeki class> -- veritabanındaki ilişkili oldugu tablo
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Category> Categories { get; set; }
+
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }

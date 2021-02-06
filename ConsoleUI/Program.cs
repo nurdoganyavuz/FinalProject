@@ -29,6 +29,20 @@ namespace ConsoleUI
             {
                 Console.WriteLine(product.ProductName);
             }
+            Console.WriteLine("-------------------------------------------------------");
+
+            foreach (var product in productManager.GetProductDetails())
+            {
+                Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+            }
+            Console.WriteLine("-------------------------------------------------------");
+
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            foreach (var category in categoryManager.GetAll())
+            {
+                Console.WriteLine(category.CategoryName);
+            }
+           
 
         }
     }

@@ -1,10 +1,10 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     //Generic Constraint -- Generic kısıt; T istediğimiz tipi parametre olarak girmemizi sağlar ama biz sadece entity objeleri "girilebilsin" istiyoruz.
     //class -> referans tip. T generic tipini where ile kısıtladık. T bir referans tip olmalı VE IEntity classını implement eden classlardan biri olmalı.
