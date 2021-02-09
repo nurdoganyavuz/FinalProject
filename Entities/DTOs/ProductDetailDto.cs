@@ -16,3 +16,5 @@ namespace Entities.DTOs
         public short UnitsInStock { get; set; }
     }
 }
+
+//generate type / generate new type / public / interface / IDto / Core / create new file / "Entities/IDto.cs" / OK.

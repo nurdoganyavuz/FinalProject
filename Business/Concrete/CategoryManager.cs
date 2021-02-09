@@ -9,9 +9,9 @@ namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        ICategoryDal _categoryDal;
+        ICategoryDal _categoryDal; //ICategoryDal'ı implemente eden bütün classları kullanabilelim diye. EF, InMemory ya da baska bi teknik fark etmez.
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(ICategoryDal categoryDal) //ctor - injection
         {
             _categoryDal = categoryDal;
         }

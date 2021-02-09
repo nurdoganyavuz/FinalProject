@@ -9,8 +9,9 @@ namespace DataAccess.Abstract
 {
     public interface IProductDal : IEntityRepository<Product>
     {
-        List<ProductDetailDto> GetProductDetails();
+        List<ProductDetailDto> GetProductDetails(); //ürün detaylarını listeleme operasyonu.
     }
 }
 
-//product ile ilgili *veritabanında* yapılacak operasyonları içeren interface
+//IEntityRepository Core katmanında. Ancak burada onu kullanmak durumundayız. Yani DataAccess katmanının Core katmanına bağımlılıgı var.
+//dolayısıyla data access katmanına core katmanını referans olarak ekleriz Kİ core'daki class'ları ihtiyaç halinde burada kullanabilelim.

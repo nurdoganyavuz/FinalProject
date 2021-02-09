@@ -7,10 +7,12 @@ using System.Linq.Expressions;
 using System.Text;
 
 namespace Core.DataAccess.EntityFramework
-{
-    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : class, IEntity, new()
-        where TContext : DbContext, new()
+{    //TEntity girilen entity objesi, yani veritabanındaki bir tabloyu ifade ecden obje.
+    //hangi entity objesi girildiyse; o objeye göre IEntityRepository çalışsın istiyoruz. Bu yüzden -> IEntityRepository<TEntity> ekledik.
+
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity> 
+        where TEntity : class, IEntity, new() //girilen parametre bir IEntity objesi olmalı. Generic Constraint--> IEntityRepository'de kullandıgımız mantık
+        where TContext : DbContext, new() //ve parametre olarak bir context sınıf (veritabanı) girilmeli. Hangi veritabanını kullanacaksak onu gireriz.
     {
         public void Add(TEntity entity)
         {

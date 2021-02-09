@@ -14,6 +14,8 @@ namespace Business.Abstract
 
         List<Product> GetByUnitPrice(decimal min, decimal max); //verilen fiyat aralıgındaki ürünleri listeler.
 
-        List<ProductDetailDto> GetProductDetails();
+        List<ProductDetailDto> GetProductDetails(); //ürün detayı listeler. DTO yapısını kullanarak.
     }
 }
+
+//product ile ilgili DIŞ DÜNYAYA neyi servis etmek istiyorsak buraya onu yazarız.
