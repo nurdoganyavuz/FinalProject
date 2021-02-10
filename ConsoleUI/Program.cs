@@ -9,36 +9,44 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("==========PRODUCT İŞLEMLERİ==========");
+            //Console.WriteLine("==========PRODUCT İŞLEMLERİ==========");
 
             ProductManager productManager = new ProductManager(new EfProductDal()); //veriye erişim tekniğimizi Ef yaptık. Yani *veritabanındaki verilere göre çalışacak. InMemoryDal yapsaydık kendi olusturdugumuz verilere göre çalışacaktı.
 
-            foreach (var product in productManager.GetAll()) //tüm ürünleri listeler.
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            //foreach (var product in productManager.GetAll()) //tüm ürünleri listeler.
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
 
-            Console.WriteLine("----------Kategori Filtresi ile Ürün Listeleme----------");
+            //Console.WriteLine("----------Kategori Filtresi ile Ürün Listeleme----------");
 
-            foreach (var product in productManager.GetAllByCategoryId(2))
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            //foreach (var product in productManager.GetAllByCategoryId(2))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
 
-            Console.WriteLine("----------Fiyat Aralığına Göre Ürün Listeleme----------");
+            //Console.WriteLine("----------Fiyat Aralığına Göre Ürün Listeleme----------");
 
-            foreach (var product in productManager.GetByUnitPrice(50, 100))
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            //foreach (var product in productManager.GetByUnitPrice(50, 100))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
 
             Console.WriteLine("----------Ürün Detayı Listeleme (DTO)----------");
 
-            foreach (var product in productManager.GetProductDetails())
+            var result = productManager.GetProductDetails();
+            if (result.Success == true)
             {
-                Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
-
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
             Console.WriteLine("========== CATEGORY İŞLEMLERİ ==========");
 
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
