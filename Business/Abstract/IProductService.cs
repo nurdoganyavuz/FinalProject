@@ -17,9 +17,9 @@ namespace Business.Abstract
 
         IDataResult<List<ProductDetailDto>> GetProductDetails(); //ürün detayı listeler. DTO yapısını kullanarak.
 
-        IDataResult<Product> GetById(int productId);
+        IDataResult<Product> GetById(int productId); //id'si verilen ürünü verir.
 
-        IResult Add(Product product);
+        IResult Add(Product product); //ürün ekleme operasyonu.
     }
 }
 

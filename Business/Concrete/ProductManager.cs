@@ -23,28 +23,26 @@ namespace Business.Concrete
         {
             if (product.ProductName.Length<2)
             {
-                return new ErrorResult(Messages.ProductNameInvalid);
+                return new ErrorResult(Messages.ProductNameInvalid); //girilen ürün ismi 2 karakterden az ise ProductNameInvalid mesajını döndürecek, ve eklemeyecek.
             }
             _productDal.Add(product);
 
-            return new SuccessResult(Messages.ProductAdded);
+            return new SuccessResult(Messages.ProductAdded); //girilen ürün eklendiğinde ProductAdded mesajını döndürecek.
         }
 
         public IDataResult<List<Product>> GetAll()
         {
-            //iş kodları --- girilen ürün 5 karakterden oluşsun, tedarikçinin ıd'si şu olsun vs gibi işlemler/kurallar olur burada.
-            //eğer bunlar halledilirse-- data access katmanına gider ve aşagıdaki kodu döndürür.
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 22) //sistemin anlık saati 22 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed); //kuralları sağlıyorum artık bana ürünleri getir diyor.
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed); 
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == id)); //programda gönderilen kategori id'yi filtre olarak alır ve her ürünün kategori id'sine bakar, 
-                                                               //gönderilen kategori id ile kategori id'si EŞİT olan tüm ürünleri getirir.
+                                                                                                     //gönderilen kategori id ile kategori id'si EŞİT olan tüm ürünleri getirir.
         }
 
         public IDataResult<Product> GetById(int productId)
@@ -59,6 +57,11 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
+            if (DateTime.Now.Hour == 03) //sistemin anlık saati 03 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
+            {
+                return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+            }
+
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
     }
