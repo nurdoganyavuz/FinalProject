@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 22) //sistemin anlık saati 22 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
+            if (DateTime.Now.Hour == 02) //sistemin anlık saati 22 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
