@@ -18,3 +18,5 @@ namespace Core.CrossCuttingConcerns.Validation
         }
     }
 }
+
+//static sınıfın metotları da static olur.

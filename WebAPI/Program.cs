@@ -21,10 +21,10 @@ namespace WebAPI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory()) //start
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
-                    builder.RegisterModule(new AutofacBusinessModule());
+                    builder.RegisterModule(new AutofacBusinessModule());  //finish
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
@@ -32,3 +32,9 @@ namespace WebAPI
                 });
     }
 }
+
+//start-finish
+//hangi IoC ile çalýþacagýmýzý belirttiðimiz kýsým.
+//API'ye autofac servis saðlayýcýsý ile çalýþacaðýmýzý söylüyoruz.
+//.net'in kendi IoC yapýsýný deðil de autofac'i kullanacaðýmýzý burada belirtmek zorundayýz.
+//eðer baska bir servis saðlayýcýsý ile çalýþacak olursak; autofac yazdýgýmýz yerleri silip, kullanacaðýmýz servisi yazarýz.

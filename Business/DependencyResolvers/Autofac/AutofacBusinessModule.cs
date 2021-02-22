@@ -16,7 +16,7 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
+            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance(); //IProductService çağırıldıgı zaman kullanılması için *BİR TANE* ProductManager instance'ı olusturulur.
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
@@ -29,3 +29,6 @@ namespace Business.DependencyResolvers.Autofac
         }
     }
 }
+
+//Bellekte ProductManager için bir instance olusturulur ve IProductService interface'inin çağırıldıgı her yere bu instance gönderilir.
+//böylece her işlem için yeniden ProductManager instance'ı olusturmamıza(newlememize) gerek kalmaz. Bunu yapmamış olsaydık onlarca instance olusturmak zorunda kalırdık.

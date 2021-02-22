@@ -12,7 +12,7 @@ namespace Core.Utilities.Interceptors
         public override void Intercept(IInvocation invocation)
         {
             var isSuccess = true;
-            OnBefore(invocation);
+            OnBefore(invocation); //attribute'u metodun başında çalıştırmak için kullanılır.
             try
             {
                 invocation.Proceed();
@@ -20,17 +20,17 @@ namespace Core.Utilities.Interceptors
             catch (Exception e)
             {
                 isSuccess = false;
-                OnException(invocation, e);
+                OnException(invocation, e); //metot hata aldıgında çalıştırmak için.
                 throw;
             }
             finally
             {
                 if (isSuccess)
                 {
-                    OnSuccess(invocation);
+                    OnSuccess(invocation); //metot başarılı oldugunda çalıştırmak için.
                 }
             }
-            OnAfter(invocation);
+            OnAfter(invocation); //metodun sonunda çalıştırmak için.
         }
     }
 }
