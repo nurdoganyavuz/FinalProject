@@ -70,7 +70,7 @@ namespace WebAPI.Controllers
 //Burada ctor içine IProductService verdik, yani controller çalışmaya basladıgında IProductService'i implement eden bir class istiyoruz. 
 //program bunun productmanager oldugunu çözümleyemez. çünkü birden fazla class IProductService'i implement edebilir. hangisi oldugunu bilemez.
 //burada direkt productmanager verseydik, yani somut class. ona bagımlı olmus olurduk. BUNUN YERİNE;
-//IoC Container -- Inversion of control yapısını kullanırız. ctor'daki soyut sınıf parametresinin arkaplanda hangi class'ın referansını tutuyorsa
+//IoC Container -- Inversion of control yapısını kullanırız. ctor'daki soyut sınıf parametresi, arkaplanda hangi class'ın referansını tutuyorsa
 //o class'ın newlenmiş hali IoC'de tutulur. ProductsController çalıştıgında IoC kutusu kontrol edilir ve 
 //ctor'daki Iproductservice hangi classın referansını tutuyorsa o getirilir. böylece controller ıproductservice'i çözümlemiş olur.
 

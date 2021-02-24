@@ -20,6 +20,8 @@ namespace Business.Abstract
         IDataResult<Product> GetById(int productId); //id'si verilen ürünü verir.
 
         IResult Add(Product product); //ürün ekleme operasyonu.
+
+        IResult Update(Product product);
     }
 }
 

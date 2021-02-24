@@ -11,7 +11,7 @@ namespace ConsoleUI
         {
             Console.WriteLine("==========PRODUCT İŞLEMLERİ==========");
 
-            ProductManager productManager = new ProductManager(new EfProductDal()); //veriye erişim tekniğimizi Ef yaptık. Yani *veritabanındaki verilere göre çalışacak. InMemoryDal yapsaydık kendi olusturdugumuz verilere göre çalışacaktı.
+            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal())); //veriye erişim tekniğimizi Ef yaptık. Yani *veritabanındaki verilere göre çalışacak. InMemoryDal yapsaydık kendi olusturdugumuz verilere göre çalışacaktı.
 
             //foreach (var product in productManager.GetAll()) //tüm ürünleri listeler.
             //{
