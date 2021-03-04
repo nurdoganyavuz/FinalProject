@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Validation;
@@ -26,7 +27,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -44,7 +45,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 02) //sistemin anlık saati 22 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
+            if (DateTime.Now.Hour == 04) //sistemin anlık saati 22 ise; bu operasyon çalışmasın ve sistem bakımda mesajı versin.
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
@@ -85,6 +86,7 @@ namespace Business.Concrete
 
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {
+            //select count(*) from products where categoryId = 1 -> aşağıdaki kod blogu girilen kategori id'ye göre db'de bu sorguyu çalıştırır.
             var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
             if (result >= 10)
             {
@@ -95,7 +97,10 @@ namespace Business.Concrete
 
         private IResult CheckIfProductNameExist(string productName)
         {
-            var result = _productDal.GetAll(p => p.ProductName == productName).Any();
+            //eklenen ürünün ismi, db'deki ürünler içerisinde başka bir product' da var mı?
+            //Any() -> sorguyu sağlayan bir ürün var mı yok mu? Bool döndürür.
+
+            var result = _productDal.GetAll(p => p.ProductName == productName).Any(); 
             if (result == true)
             {
                 return new ErrorResult(Messages.ProductNameAlreadyExist);
@@ -113,4 +118,3 @@ namespace Business.Concrete
         }
     }
 }
-

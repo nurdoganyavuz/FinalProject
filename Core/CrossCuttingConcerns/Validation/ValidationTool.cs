@@ -32,10 +32,12 @@ namespace Core.CrossCuttingConcerns.Validation
 
 //entity objesine(diyelim ki product objesi), validator doğrulamasını(ProductValidator) yap, 
 //doğrulama işlemi başarısız olursa exception fırlat.
+//(IValidator validator, object entity) -> (ProductValidator, product) şeklinde doğruluma sınıfı ve doğrulama yapılacak olan obje girilmelidir.
 
 //entity'i object olarak tanımlamamızın nedeni; 
 //buraya parametre olarak db'deki bir kolonu ifade eden classın objesi de gelebilir, dto objesi de gelebilir.
 //object tüm bu yapıların base'idir, girilen parametreye göre bellekte adres tutar. 
+//mesela product objesi girilmiş ise product'ın tipi Product oldugu için; bellekte Product tipinde referans tutulur.
 
 //bu sınıfı oluşturmasaydık. her validator için şu blokları yazmak zorunda kalacaktık;
 

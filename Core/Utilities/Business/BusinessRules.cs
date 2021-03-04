@@ -20,3 +20,8 @@ namespace Core.Utilities.Business
         }
     }
 }
+
+//run metodu içerisine istediğimiz kadar IResult tipinde *parametre* girebiliriz.
+//girilen bu parametreler foreach ile gezilir
+//başarısız olan logic varsa return edilir, yani direkt o başarısız olan logic döndürülür ki; ona ait errorresult mesajı verilebilsin.
+//böylece kullanıcı hangi iş kuralının sağlanmadığını anlayabilsin.
