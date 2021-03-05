@@ -22,6 +22,6 @@ namespace Core.Utilities.Security.Encryption
 
 //hashleme işlemlerinde hangi şifreleme işleminin kullanacagını şifrenin nasıl dogrulanacagını yazmıstık
 //burada da api kendisine gönderilen token'ı(jwt) doğrulayacak
-//burada hangi anahtarı ve hangi şifreleme algoritmasını kullanarak doğrulama yapacagını bildiriyoruz.
+//burada hangi anahtarı ve hangi şifreleme algoritmasını kullanarak doğrulama yapacagını bildiriyoruz. (*****)
 //yani api'ye gönderilen token doğru bir key mi? sistemin kapısını açacak dogru anahtar mı?
 //burada bunun kontrolü yapılıyor; bunun için parametre olarak bir KEY ve bu key'i doğrulayacak şifreleme algoritması girilir.

@@ -71,9 +71,9 @@ namespace WebAPI
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthentication(); //eve girmek
 
-            app.UseAuthorization();
+            app.UseAuthorization(); //mutfaga girmek
 
             app.UseEndpoints(endpoints =>
             {

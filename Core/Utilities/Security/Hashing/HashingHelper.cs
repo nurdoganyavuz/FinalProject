@@ -8,7 +8,7 @@ namespace Core.Utilities.Security.Hashing
     {
         public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new System.Security.Cryptography.HMACSHA512()) //hashing algoritmasını oluşturduk ve hmac'e atadık.
             {
                 passwordSalt = hmac.Key; //hmac'in key degerini; password'e eklenecek olan salt'a veriyoruz.
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)); //gönderilen password'ün byte olarak karşılıgını alır ve hashler. -> ComputeHash metodu
@@ -22,7 +22,7 @@ namespace Core.Utilities.Security.Hashing
                 var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
                 {
-                    if (computedHash[i] != passwordHash[i])
+                    if (computedHash[i] != passwordHash[i]) //db'deki hash ile sonradan(login oldugunda) hesaplanan hash değerleri karsılastırılıyor.
                     {
                         return false;
                     }
@@ -32,13 +32,19 @@ namespace Core.Utilities.Security.Hashing
         }
     }
 }
+//out byte[] passwordHash, out byte[] passwordSalt
+//oluşturulan hash ve salt'ı out keywordü ile oluşturulduktan *sonra* byte array içerisine aktarabiliriz.
+//yani sonradan değer atanacak bir parametre oldugu için out kullanarak olusturduk.
 
-//CreatePasswordHash;
+//password için db'de hash ve salt olusturulur(kayıt olundugunda). 
+//doğrulama için salt kullanılarak hash tekrar hesaplanır ve db'deki hash ile aynı mı kontrol edilir. (sisteme kayıt olduktan sonra giriş yaparken)
+
+//(*)CreatePasswordHash; 
 //ona verdiğimiz password'ün hash'ini ve salt'ını olusturacak, dışarıya verecek. -> out keyword'ü ile.
 //kullandıgımız algoritmanın: hmac->(HMACSHA512) key değerini; passworde güçlendirmek için eklenen salt degerine atarız.
 //computehash ile password'ü hashleriz ve hash değerine atarız.
 
-//VerifyPasswordHash;
+//(*)VerifyPasswordHash;
 //passwordhash'i doğrulamak için oluşturduk.
 //kullanıcı sisteme kayıt oldugu zaman olusturdugu sifrenin hashlenmiş hali db'de tutulur.
 //kullanıcı sisteme tekrardan girdiğinde şifresini yollayınca sisteme diyoruz ki böyle bir şifreyi nasıl hashlerdin?

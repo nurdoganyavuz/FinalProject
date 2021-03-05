@@ -11,3 +11,5 @@ namespace DataAccess.Abstract
         List<OperationClaim> GetClaims(User user);
     }
 }
+
+//kullanıcının sahip oldugu claimler'i(yetkileri) listeler.

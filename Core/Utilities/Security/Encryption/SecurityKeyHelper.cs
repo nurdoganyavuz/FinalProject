@@ -7,7 +7,7 @@ namespace Core.Utilities.Security.Encryption
 {
     public class SecurityKeyHelper
     {
-        public static SecurityKey CreateSecurityKey(string securityKey) //apsettings.json'daki securitykey'i verdik
+        public static SecurityKey CreateSecurityKey(string securityKey) //apsettings.json'daki securitykey'i alacak.
         {
             return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey)); //securitykey'i byte'a dönüştürdük
         }

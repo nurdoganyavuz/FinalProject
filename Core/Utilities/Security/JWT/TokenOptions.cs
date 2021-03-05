@@ -12,3 +12,7 @@ namespace Core.Utilities.Security.JWT
         public string SecurityKey { get; set; }
     }
 }
+//appsettings dosyası içerisinde tutulan token optionslar için bir nesne oluşturduk.
+//appsettings dosyasındaki token optionları proje içinde kullanacagımız için
+//burada nesne olarak oluşturduk, jwthelper'da buradaki nesneler ile appsettings'dekileri maplicez.
+//yani örneğin buradaki Audience değerini, appsettings'deki Audience'dan alacağız. Issuer'ı appsettings'deki Issuer'dan vs.
