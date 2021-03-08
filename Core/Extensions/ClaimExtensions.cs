@@ -11,7 +11,7 @@ namespace Core.Extensions
     {
         public static void AddEmail(this ICollection<Claim> claims, string email)
         {
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, email)); //jwt'nin email kısmına gönderdiğimiz email'i kaydet
+            claims.Add(new Claim(JwtRegisteredClaimNames.Email, email)); //jwt'nin Email kısmına; gönderdiğimiz email'i kaydet.
         }
 
         public static void AddName(this ICollection<Claim> claims, string name) //isim ekleme metodu
@@ -24,7 +24,7 @@ namespace Core.Extensions
             claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentifier));
         }
 
-        public static void AddRoles(this ICollection<Claim> claims, string[] roles) //rol ekleme metodu, birden fazla olabileceği için string array şeklinde tutarız.
+        public static void AddRoles(this ICollection<Claim> claims, string[] roles) //rol ekleme metodu, birden fazla rol olabileceği için string array şeklinde tutarız.
         {
             roles.ToList().ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
         }

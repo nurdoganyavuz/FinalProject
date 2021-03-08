@@ -17,3 +17,7 @@ namespace Core.Utilities.Security.Encryption
 //encryption işlemi için bir anahtara ihtiyacımız var, bu anahtarı appsettings.json dosyasında olusturduk
 //olusturulan bu key'in encryption işlemlerinde kullanılması için byte formatında tutulması gerekir
 //bu yüzden securityKey'i byte formatında döndürürüz.
+
+//bu sayede appsettings içerisindeki securitykey alınır ve byte'a dönüştürülür
+//bu anahtar bizim token olusturmamız için gereklidir.
+//yani bu güvenlik anahatarı sayesinde token'larımızı olusturabiliriz. evin anahtarı mantıgını düşün. anahtarsız giremezsin.

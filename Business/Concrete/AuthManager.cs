@@ -24,8 +24,8 @@ namespace Business.Concrete
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            byte[] passwordHash, passwordSalt; //byte tipinde boş passwordHash ve passwordSalt olusturduk.
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt); //burada passwordHash ve passwordSalt değer alınca *out* sayesinde yukarıya yansımış olacak. yani artık boş olmayacaklar, içleri dolacak.
             var user = new User
             {
                 Email = userForRegisterDto.Email,

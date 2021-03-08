@@ -14,6 +14,9 @@ namespace Core.Utilities.Security.Encryption
     }
 }
 
+//bu sınıfta hangi anahtarı(securitykey) ve hangi şifreleme algoritmasını(algorithms) kullanarak doğrulama yapacagımızı bildiriyoruz. (*****)
+//buradaki algoritma encrypt edilen(şifrelenen) datanın nasıl encrypt edileceğini belirler.
+
 //imzalama
 //API'den bize token gönderilmesi için doğrulama işleminin sağlanması gerekiyor.
 //Credentials-> kullanıcının sisteme girmesi için elinde olanlar (kullanıcı adı, parola, email vs)
@@ -22,6 +25,5 @@ namespace Core.Utilities.Security.Encryption
 
 //hashleme işlemlerinde hangi şifreleme işleminin kullanacagını şifrenin nasıl dogrulanacagını yazmıstık
 //burada da api kendisine gönderilen token'ı(jwt) doğrulayacak
-//burada hangi anahtarı ve hangi şifreleme algoritmasını kullanarak doğrulama yapacagını bildiriyoruz. (*****)
 //yani api'ye gönderilen token doğru bir key mi? sistemin kapısını açacak dogru anahtar mı?
 //burada bunun kontrolü yapılıyor; bunun için parametre olarak bir KEY ve bu key'i doğrulayacak şifreleme algoritması girilir.
