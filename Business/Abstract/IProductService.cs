@@ -22,6 +22,8 @@ namespace Business.Abstract
         IResult Add(Product product); //ürün ekleme operasyonu.
 
         IResult Update(Product product);
+
+        IResult AddTransactionalTest(Product product);
     }
 }
 
