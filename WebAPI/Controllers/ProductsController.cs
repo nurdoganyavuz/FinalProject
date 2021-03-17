@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -25,11 +26,11 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            
+            Thread.Sleep(5000);
             var result = _productService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data); //result'ın success'i true ise Ok durumunu döndürür. Ok -> 200 ok -> requestin basarılı oldugunu belirtir. 
+                return Ok(result); //result'ın success'i true ise Ok durumunu döndürür. Ok -> 200 ok -> requestin basarılı oldugunu belirtir. 
             }                          //result.data -> succes true ise result'ın sadece datasını döndürür, success ya da message gelmez.
             return BadRequest(result.Message); //result'ın succes'i false ise BadRequest döndürür. result.message yaptıgımız için success false ise result'ın sadece mesajını döndürür.
            
